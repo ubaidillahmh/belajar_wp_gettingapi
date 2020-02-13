@@ -68,7 +68,6 @@
                 $error_message = $req->get_error_message();
                 echo "Something went wrong: $error_message";
              } else {
-                // echo json_encode($req);
                 echo 'Berhasil Simpan!';
              }
         }

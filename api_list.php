@@ -6,12 +6,8 @@
         $data   = []; 
         $url    = site_url().'/wp-json/wp/v2/posts';
         $req    = wp_remote_get($url);
-        // if(is_array($req)){
-        //     $data = $req['body'];
-        //     $data = json_decode($data);
-        // }
         $data   = json_decode(wp_remote_retrieve_body( $req )); 
-        // $total  = count($data);
+        
         ?>
             <div class="table">
                 <table border="1px">

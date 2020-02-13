@@ -46,7 +46,7 @@
             $content    = esc_textarea( $_POST['content'] );
             $pass       = $_POST['pass'];
             $user       = wp_get_current_user();
-            // echo $title;
+            
             $data = array(
                 'title'     => $title,
                 'content'   => $content,
@@ -66,7 +66,6 @@
                 $error_message = $req->get_error_message();
                 echo "Something went wrong: $error_message";
              } else {
-                // echo json_encode($req);
                 echo 'Berhasil Simpan!';
              }
         }

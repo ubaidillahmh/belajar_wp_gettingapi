@@ -14,7 +14,6 @@
                     'method' => 'DELETE'
                 ]);
             wp_redirect(admin_url());
-            // wp_die();
         }
         if(isset($_GET['id']))
         {
