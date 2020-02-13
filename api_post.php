@@ -49,7 +49,7 @@
             );
 
             // basic auth needed
-            $url = 'http://localhost/get_api/wp-json/wp/v2/posts';
+            $url = site_url().'/wp-json/wp/v2/posts';
             $req = wp_remote_post($url, array(
                 'headers' => array(
                     'Authorization' => 'Basic ' . base64_encode('admin:admin'),

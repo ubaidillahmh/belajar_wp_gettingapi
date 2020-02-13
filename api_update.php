@@ -3,7 +3,7 @@
     function api_formupdate()
     {
         $data   = []; 
-        $url    = 'http://localhost/get_api/wp-json/wp/v2/posts/'.$_GET['id'];
+        $url    = site_url().'/wp-json/wp/v2/posts/'.$_GET['id'];
         $req    = wp_remote_get($url);
         if(is_array($req)){
             $data = $req['body'];
@@ -62,7 +62,7 @@
             );
 
             // Basic Auth Required
-            $url = 'http://localhost/get_api/wp-json/wp/v2/posts/'.$_GET['id'];
+            $url = site_url().'/wp-json/wp/v2/posts/'.$_GET['id'];
             $req = wp_remote_post($url, array(
                 'headers' => array(
                     'Authorization' => 'Basic ' . base64_encode('admin:admin'),

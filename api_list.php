@@ -4,7 +4,7 @@
     {
         if(isset($_GET['delete']) && isset($_GET['id']))
         {
-            $urldel    = 'http://localhost/get_api/wp-json/wp/v2/posts/'.$_GET['id'];
+            $urldel    = site_url().'/wp-json/wp/v2/posts/'.$_GET['id'];
             $reqdel    = wp_remote_request($urldel, [
                     'headers' => array(
                         'Authorization' => 'Basic ' . base64_encode('admin:admin'),
@@ -15,7 +15,7 @@
             // wp_die();
         }
         $data   = []; 
-        $url    = 'http://localhost/get_api/wp-json/wp/v2/posts';
+        $url    = site_url().'/wp-json/wp/v2/posts';
         $req    = wp_remote_get($url);
         if(is_array($req)){
             $data = $req['body'];
