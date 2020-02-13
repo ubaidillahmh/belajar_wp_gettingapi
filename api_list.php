@@ -2,18 +2,7 @@
 
     function api_getdata($loop)
     {
-        if(isset($_GET['delete']) && isset($_GET['id']))
-        {
-            $urldel    = site_url().'/wp-json/wp/v2/posts/'.$_GET['id'];
-            $reqdel    = wp_remote_request($urldel, [
-                    'headers' => array(
-                        'Authorization' => 'Basic ' . base64_encode('admin:admin'),
-                    ),
-                    'method' => 'DELETE'
-                ]);
-            wp_redirect(admin_url());
-            // wp_die();
-        }
+        
         $data   = []; 
         $url    = site_url().'/wp-json/wp/v2/posts';
         $req    = wp_remote_get($url);
@@ -45,7 +34,7 @@
                     <td><?php echo $item->status; ?></td>
                     <td>
                         <a href="<?php echo admin_url('admin.php?page=api_post_update') ?>&update&id=<?php echo $item->id ?>">update</a>
-                        <a href="<?php echo admin_url('admin.php?page=api_post') ?>&delete&id=<?php echo $item->id ?>">delete</a>
+                        <a href="<?php echo admin_url('admin.php?page=api_post_delete') ?>&delete&id=<?php echo $item->id ?>">delete</a>
                     </td>
                 </tr>
             <?php

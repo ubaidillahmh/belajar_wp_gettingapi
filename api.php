@@ -8,6 +8,7 @@
     require_once('api_list.php');
     require_once('api_post.php');
     require_once('api_update.php');
+    require_once('api_delete.php');
 
     // Add action to the Admin Menu
     add_action('admin_menu','api_all_menu');
@@ -36,6 +37,14 @@
             'manage_options', // capability
             'api_post_update', // menu slug
             'api_updatemerge' // function
+        );
+
+        add_submenu_page('api_post', // parent slug
+            'Delete Post', // page title
+            'Delete Post',
+            'manage_options', // capability
+            'api_post_delete', // menu slug
+            'api_delete' // function
         );
     }
 ?>

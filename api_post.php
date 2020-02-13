@@ -14,6 +14,10 @@
                     <textarea name="content" rows="3"></textarea>
                 </p>
                 <p>
+                    Password <br>
+                    <input type="password" name="pass">
+                </p>
+                <p>
                     <input type="submit" name="api-submit" value="Send">
                 </p>
             </form>
@@ -26,7 +30,9 @@
         {
             $title      = sanitize_text_field( $_POST['title'] );
             $content    = esc_textarea( $_POST['content'] );
-            // echo $title;
+            $pass       = $_POST['pass'];
+            $user       = wp_get_current_user();
+            
             $data = array(
                 'date'      => date('Y-m-d H:i:s'),
                 'date_gmt'      => null,
@@ -52,7 +58,7 @@
             $url = site_url().'/wp-json/wp/v2/posts';
             $req = wp_remote_post($url, array(
                 'headers' => array(
-                    'Authorization' => 'Basic ' . base64_encode('admin:admin'),
+                    'Authorization' => 'Basic ' . base64_encode($user->user_login.':'.$pass),
                 ),
                 'method'    => 'POST',
                 'body'      => $data
